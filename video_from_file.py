@@ -1,0 +1,16 @@
+import cv2 as cv
+
+cap = cv.VideoCapture('/home/i_litvinov/Downloads/Telegram Desktop/IMG_0323.MOV')
+while cap.isOpened():
+    ret, frame = cap.read()
+    # if frame is read correctly ret is True
+    if not ret:
+        print("Can't receive frame (stream end?). Exiting ...")
+        break
+    gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
+    cv.namedWindow('frame', cv.WINDOW_NORMAL)
+    cv.imshow('frame', gray)
+    if cv.waitKey(1) == ord('q'):
+        break
+cap.release()
+cv.destroyAllWindows()
