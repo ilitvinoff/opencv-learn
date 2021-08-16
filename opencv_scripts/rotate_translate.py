@@ -5,7 +5,7 @@ import cv2
 # Reading the image
 import numpy as np
 
-from scripts import test_images, handle_img
+from opencv_scripts import test_images, handle_img
 
 image = cv2.imread(test_images['bob'])
 

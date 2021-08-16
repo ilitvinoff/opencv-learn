@@ -3,7 +3,7 @@ import queue
 
 import cv2
 
-from scripts import test_images, handle_img
+from opencv_scripts import test_images, handle_img
 
 img = cv2.imread(test_images['two cubes'])
 print(f'orig size: {img.shape}')  # Print image shape

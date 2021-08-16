@@ -3,7 +3,7 @@ import sys
 
 import cv2
 
-from scripts import test_images, handle_img
+from opencv_scripts import test_images, handle_img
 
 img_tuple = ((cv2.imread(test_images['legion'], cv2.IMREAD_COLOR), 1),
              (cv2.imread(test_images['legion'], cv2.IMREAD_GRAYSCALE), 2),

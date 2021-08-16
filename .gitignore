@@ -1,4 +1,4 @@
 .idea/
 legion.jpg
 openCV_venv/
-scripts/__pycache__/
+opencv_scripts/__pycache__/

@@ -5,7 +5,7 @@ import random
 import cv2
 
 # Read the image using imread function
-from scripts import test_images, handle_img
+from opencv_scripts import test_images, handle_img
 
 image_legion = cv2.imread(test_images['legion'])
 cv2.imshow('Legion', image_legion)
