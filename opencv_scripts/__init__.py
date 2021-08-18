@@ -4,13 +4,13 @@ from functools import reduce
 import cv2
 import numpy as np
 
-test_images = {'legion': "/home/i_litvinov/Pictures/10.jpg",
-               'bob': "/home/i_litvinov/Pictures/07.jpg",
-               'two cubes': "/home/i_litvinov/Pictures/openCV-images/two-cubes.png",
-               'dark cube': "/home/i_litvinov/Pictures/openCV-images/dark_cube.jpg",
-               'light cube': "/home/i_litvinov/Pictures/openCV-images/light_cube.jpg",
-               'dark green': "/home/i_litvinov/Pictures/openCV-images/dark_green.jpg",
-               'light green': "/home/i_litvinov/Pictures/openCV-images/light_green.jpg",
+test_images = {'legion': "assets/10.jpg",
+               'bob': "assets/07.jpg",
+               'two cubes': "assets/two-cubes.png",
+               'dark cube': "assets/dark_cube.jpg",
+               'light cube': "assets/light_cube.jpg",
+               'dark green': "assets/dark_green.jpg",
+               'light green': "assets/light_green.jpg",
                }
 
 
