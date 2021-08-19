@@ -76,7 +76,12 @@ def handle_img(img_config, img_queue, window_flag=cv2.WINDOW_NORMAL):
 
 
 def key_event_handler(k):
-    return k != ord('k'), k == ord('n'), k == ord('s')
+    return k == ord('k'), k == ord('n'), k == ord('s')
+
+
+def clear_queue(obj):
+    while not obj.empty():
+        obj.get()
 
 
 img_queue = queue.Queue()
@@ -87,6 +92,8 @@ stop_program = False
 # for every variant of color to search for
 for piece in os.listdir(PIECES):
     if stop_program:
+        clear_queue(img_queue)
+        cv2.destroyAllWindows()
         break
 
     img_piece = cv2.imread(os.path.join(PIECES, piece))
@@ -99,6 +106,8 @@ for piece in os.listdir(PIECES):
     # for different lightning conditions
     for cube in os.listdir(CUBES):
         if stop_program or next_piece:
+            clear_queue(img_queue)
+            cv2.destroyAllWindows()
             break
 
         # show which color we searching now
@@ -115,15 +124,19 @@ for piece in os.listdir(PIECES):
         # load queue to start handle img
         img_queue.put((img_panel, f"search for {os.path.split(piece)[1]}"))
 
-        show_img = True
+        stop_current_show = False
         # show result of the searching
-        while not img_queue.empty() and show_img:
-            if next_piece or stop_program:
-                break
+        while not img_queue.empty() and not stop_current_show:
 
             handle_img(img_queue.get(), img_queue)
             k = cv2.waitKey(1)
-            show_img, next_piece, stop_program = key_event_handler(k)
+            stop_current_show, next_piece, stop_program = key_event_handler(k)
+
+            if next_piece or stop_program or stop_current_show:
+                clear_queue(img_queue)
+                cv2.destroyAllWindows()
+                break
+
 
 #
 # BRIGHT = convert_size(cv2.imread(opencv_scripts.test_images['light cube']))
