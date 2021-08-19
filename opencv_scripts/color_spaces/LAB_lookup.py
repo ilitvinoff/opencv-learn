@@ -10,8 +10,8 @@ import opencv_scripts
 CUBES = "assets/cube/"
 PIECES = "assets/pieces/"
 
-HSV_CHANNEL_BOUNDARIES = (255, 255, 255)
-THRESHOLD = 5
+CHANNEL_BOUNDARIES = (255, 255, 255)
+THRESHOLD = 20
 EXPECTED_SIZE = (309, 300)
 
 
@@ -64,7 +64,7 @@ def detect_color_area(color_lab, image):
     mask_model = convert_size(cv2.cvtColor(image, cv2.COLOR_BGR2LAB))
     mask_model[:, :, 0] = color_lab[0][0][0]
 
-    min, max = get_color_diapason(color_lab, THRESHOLD, HSV_CHANNEL_BOUNDARIES)
+    min, max = get_color_diapason(color_lab, THRESHOLD, CHANNEL_BOUNDARIES)
     mask = cv2.inRange(mask_model, min, max)
     return cv2.bitwise_and(image, image, mask=mask)
 
