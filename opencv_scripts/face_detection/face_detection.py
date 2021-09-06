@@ -14,20 +14,21 @@ def img_list_generator(dir_path):
     for item in os.listdir(dir_path):
         yield os.path.join(dir_path, item)
 
+
 def detect_faces(img_path):
     # Read the input image
     img = cv2.imread(img_path)
     # Convert into grayscale
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     # Detect faces
-    faces = FACE_CASCADE.detectMultiScale(gray, 1.1, 4)
+    faces = FACE_CASCADE.detectMultiScale(gray, 1.1, 3)
     # Draw rectangle around the faces
     for (x, y, w, h) in faces:
         cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
         cv2.rectangle(gray, (x, y), (x + w, y + h), (255, 0, 0), 2)
 
-    gray = cv2.cvtColor(gray,cv2.COLOR_GRAY2BGR)
-    img = concatenate_img([(gray,'gray'),(img, 'colored')])
+    gray = cv2.cvtColor(gray, cv2.COLOR_GRAY2BGR)
+    img = concatenate_img([(gray, 'gray'), (img, 'colored')])
 
     return img
 
